@@ -1,26 +1,65 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
+	const [data, setData] = useState({})
+
+	const handleChange = (event)=>{
+		setData({...data, [event.target.name]: event.target.value})
+	};
+
+	const handleSubmit = ()=>{
+			fetch(process.env.BACKEND_URL + "/api/signup",{
+				method: 'POST',
+				body: JSON.stringify(data),
+				headers:{
+					"Content-Type": "application/json"
+				}
+			}).then((resp)=>{resp.json()})
+    
+		}
+
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
-		</div>
-	);
+    <div className="text-center mt-5">
+      <form>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">
+            Email address
+          </label>
+          <input
+            type="email"
+			name="email"
+			onChange={handleChange}
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" className="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">
+            Password
+          </label>
+          <input
+		  	name="password"
+			onChange={handleChange}
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <Link to="/login">
+        <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
+          signup
+        </button>
+        </Link>        
+      </form>
+    </div>
+  );
 };
