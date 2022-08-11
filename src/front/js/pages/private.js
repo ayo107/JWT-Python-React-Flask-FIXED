@@ -10,7 +10,7 @@ export const Private = () => {
 	const [user, setUser]=useState({})
 	let navigate = useNavigate();
 	const peticionGet = async () => {
-        await axios.get(`https://3001-holyfs-validacionjwt-oc0p9hbc2op.ws-eu59.gitpod.io/api/user/1`)
+        await axios.get(process.env.BACKEND_URL + "/api/user/1")
             .then(response => {
 				console.log(response.data)
                 setUsuarios((response.data));

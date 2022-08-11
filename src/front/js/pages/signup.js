@@ -12,7 +12,7 @@ export const Signup = () => {
 	};
 
 	const handleSubmit = ()=>{
-			fetch("https://3001-holyfs-validacionjwt-oc0p9hbc2op.ws-eu59.gitpod.io/api/signup",{
+			fetch(process.env.BACKEND_URL + "/api/signup",{
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers:{
