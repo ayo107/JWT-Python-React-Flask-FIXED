@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-export const Home = () => {
+export const Notlogin = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Inicia sesión, sino tienes cuenta...Creala...</h1>
+			<h1>No estás logueado, Intruso!!!</h1>
 			<p>
-				<img src="http://3.bp.blogspot.com/-8vuHUqIo15E/VTDbP_MkrzI/AAAAAAAABc0/AA1kjvzMaYo/s1600/Bienvenida.png" />
+				<img src="https://d3t4nwcgmfrp9x.cloudfront.net/upload/estilos-liderazgo-personajes-star-wars-643x342.jpg" />
 			</p>
 			
 		</div>

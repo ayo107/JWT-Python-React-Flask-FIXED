@@ -10,7 +10,7 @@ export const Login =  () => {
 
 
   const handleLogin =  ()=>{
-     fetch(process.env.BACKEND_URL + "/api/login",{
+     fetch("https://3001-holyfs-validacionjwt-oc0p9hbc2op.ws-eu59.gitpod.io/api/login",{
       method: 'POST',
       body: JSON.stringify(),
       headers:{
