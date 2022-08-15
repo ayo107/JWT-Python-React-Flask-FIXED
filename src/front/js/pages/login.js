@@ -32,7 +32,8 @@ export const Login =  () => {
           // save your token in the localStorage
    //also you should set your user into the store using the setStore function
    localStorage.setItem("jwt-token", data.token);
-    navigate("/private") 
+   navigate("/private") 
+   window.location.reload()
    return data
 })
 }
